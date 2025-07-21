@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rohan</title>
+  </head>
+  <body>
+    <h1>Todu list</h1>
+    <form action="">
+      <input class="input" type="text" placeholder="enter the input" />
+      <button class="submit">Add the task</button>
+      <button class="Delet">Delet the tasks</button>
+    </form>
+    <div>
+      <ul class="all"></ul>
+    </div>
+
+    <script>
+      let tasks = [];
+      document.querySelector(".submit").addEventListener("click", function (e) {
+        e.preventDefault();
+        let input = document.querySelector(".input");
+        tasks.push(input.value);
+        console.log("from submit button " + input.value);
+        input.value = "";
+        addValues(tasks);
+      });
+      
+      document.querySelector(".Delet").addEventListener("click", function (e) {
+        e.preventDefault();
+        tasks.pop();
+        for (let num of tasks) {
+          console.log(num);
+        }
+        addValues(tasks);
+      });
+      function addValues(tasks) {
+        document.querySelector(".all").innerHTML = "";
+        if (tasks.length == 0) {
+          document.querySelector(".all").innerHTML = "<li>no elemts found</li>";
+          
+        } else {
+          for (let nums of tasks) {
+            document.querySelector(".all").innerHTML += `<li>${nums}</li>`;
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
